@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xin lỗi người yêu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 20%;
+            padding: 0 10px;
+        }
+        .button {
+            padding: 12px 25px;
+            margin: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .ok {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .no {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+            transition: all 0.2s ease;
+        }
+        .hidden {
+            display: none;
+        }
+        /* Tối ưu cho màn hình nhỏ */
+        @media (max-width: 600px) {
+            .button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="step1">
+        <h1>Emiu cho anh xin lõi nhé</h1>
+        <button class="button ok" onclick="showNextStep()">Okeeee</button>
+        <button class="button no" id="noBtn" onmouseover="moveButton()">Đéo</button>
+    </div>
+
+    <div class="container hidden" id="step2">
+        <h1>Thén kiu em iuuuuu, xíu nữa mình sẽ:</h1>
+        <button class="button ok" onclick="thankYou()">Đi ăn</button>
+        <button class="button ok" onclick="thankYou()">Đi dạo</button>
+        <button class="button ok" onclick="thankYou()">Cả 2</button>
+    </div>
+
+    <div class="container hidden" id="step3">
+        <h1>Camon emiu đã tha thứ, tối nay mình chơi fifai nhé ❤️</h1>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("noBtn");
+
+        function moveButton() {
+            // Đảm bảo nút không ra ngoài màn hình
+            const maxX = window.innerWidth - noBtn.offsetWidth - 20; // Giới hạn chiều ngang
+            const maxY = window.innerHeight - noBtn.offsetHeight - 20; // Giới hạn chiều dọc
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+        }
+
+        function showNextStep() {
+            document.getElementById("step1").classList.add("hidden");
+            document.getElementById("step2").classList.remove("hidden");
+        }
+
+        function thankYou() {
+            document.getElementById("step2").classList.add("hidden");
+            document.getElementById("step3").classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
